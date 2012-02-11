@@ -20,5 +20,6 @@ if [ "$IP" != "$CIP" ]
 then			
 	LOGFILE=$DIR/$(date +"%Y%m%d")_noip_updater.log		
 	wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$IP"
+	echo $IP > $CIPFILE
 fi
 
