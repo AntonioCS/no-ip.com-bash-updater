@@ -23,3 +23,5 @@ then
 	echo $IP > $CIPFILE
 fi
 
+exit 0
+
