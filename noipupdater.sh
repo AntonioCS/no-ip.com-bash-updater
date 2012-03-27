@@ -4,9 +4,9 @@
 USERNAME=username
 PASSWORD=password
 HOST=hostsite
-DIR=dir
-CIPFILE=$DIR/current_ip
-USERAGENT="Simple bash noip updater/0.2 antoniocs@gmail.com"
+LOGFILE=logdir/noip.log
+CIPFILE=dir/current_ip
+USERAGENT="Simple Bash No-IP Updater/0.3 antoniocs@gmail.com"
 
 if [ ! -e $CIPFILE ]
 then 
@@ -17,11 +17,16 @@ IP=$(wget -O - -q http://www.whatismyip.org/)
 CIP=$(cat $CIPFILE)
 
 if [ "$IP" != "$CIP" ]
-then			
-	LOGFILE=$DIR/$(date +"%Y%m%d")_noip_updater.log		
-	wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$IP"
+then
+	RESULT=$(wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$IP")
+
+	LOGLINE="[$(date +"%Y-%m-%d %H:%M:%S")] $RESULT"
 	echo $IP > $CIPFILE
+else
+	LOGLINE="[$(date +"%Y-%m-%d %H:%M:%S")] No IP change"
 fi
+
+echo $LOGLINE >> $LOGFILE
 
 exit 0
 
