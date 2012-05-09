@@ -12,7 +12,7 @@ if [ ! -e $STOREDIPFILE ]; then
 	touch $STOREDIPFILE
 fi
 
-NEWIP=$(wget -O - http://www.whatismyip.org/ -o /dev/null | grep "Your Ip Address" | awk -F">" '{print $3}' | awk -F"<" '{print $1}')
+NEWIP=$(wget -O - http://icanhazip.com/ -o /dev/null)
 STOREDIP=$(cat $STOREDIPFILE)
 
 if [ "$NEWIP" != "$STOREDIP" ]; then
