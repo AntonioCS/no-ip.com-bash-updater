@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# No-IP uses emails as usernames, so make sure that you encode the @ as %40
 USERNAME=username
 PASSWORD=password
 HOST=hostsite
