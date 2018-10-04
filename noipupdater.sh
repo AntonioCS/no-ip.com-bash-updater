@@ -14,6 +14,8 @@ fi
 
 NEWIP=$(wget -O - http://icanhazip.com/ -o /dev/null)
 STOREDIP=$(cat $STOREDIPFILE)
+# sudo apt install dnsutils
+STOREDIP=$(dig $HOST | grep $HOST | tail -n 1 | cut -f 5)
 
 if [ "$NEWIP" != "$STOREDIP" ]; then
 	RESULT=$(wget -O "$LOGFILE" -q --user-agent="$USERAGENT" --no-check-certificate "https://$USERNAME:$PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$HOST&myip=$NEWIP")
