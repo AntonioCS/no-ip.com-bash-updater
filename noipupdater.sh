@@ -25,6 +25,7 @@ NEWIP=$(wget -O - http://icanhazip.com/ -o /dev/null)
 # verify if dnsutils (dig command) is available
 if ! type "dig" > /dev/null; then
   # no dig, using fallback on file storage
+  # on Debian/Ubuntu based systems, install package with: sudo apt install dnsutils
   STOREDIP=$(cat $STOREDIPFILE)
 elif
   # use dig to get local dns record
