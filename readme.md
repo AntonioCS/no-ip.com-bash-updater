@@ -12,6 +12,7 @@ How to use
 
 Tips!
 -----
+It may be useful to have DNS dig command installed. On Debian/Ubuntu based systems, install package with: `sudo apt install dnsutils`
 
 Place this in your cron file:
 
