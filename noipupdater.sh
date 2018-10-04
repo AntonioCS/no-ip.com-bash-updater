@@ -4,8 +4,8 @@
 USERNAME=username
 PASSWORD=password
 HOST=hostsite
-LOGDIR=logdir             # best to use full absolute path
-CONFIGDIR=configdir       # best to use full absolute path
+LOGDIR=logdir             # best to use full absolute path (because of crontab integration)
+CONFIGDIR=configdir       # best to use full absolute path (because of crontab integration)
 LOGFILE=$LOGDIR/noip.log
 STOREDIPFILE=$CONFIGDIR/current_ip
 USERAGENT="Simple Bash No-IP Updater/0.4 antoniocs@gmail.com"
