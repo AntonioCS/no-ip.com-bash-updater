@@ -27,7 +27,7 @@ if ! type "dig" > /dev/null; then
   # no dig, using fallback on file storage
   # on Debian/Ubuntu based systems, install package with: sudo apt install dnsutils
   STOREDIP=$(cat $STOREDIPFILE)
-elif
+else
   # use dig to get local dns record
   STOREDIP=$(dig $HOST | grep $HOST | tail -n 1 | cut -f 5)
 fi
